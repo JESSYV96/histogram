@@ -4,7 +4,9 @@ import Histogram from "./components/HistogramVue.vue";
 
 <template>
   <h2>Distribution de nombres</h2>
-  <Histogram />
+  <Suspense>
+    <Histogram />
+  </Suspense>
 </template>
 
 <style>

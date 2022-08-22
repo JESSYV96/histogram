@@ -7,11 +7,14 @@
 </template>
 
 <script lang="ts" setup>
-import { numberArray } from "@/data";
+import { reactive } from "vue";
+
 import { getOcurrenceNumber } from "@/helpers/Histogram";
 import BarItemVue from "@/components/BarItemVue.vue";
+import { getNumbersList } from "@/services/HistogramService";
 
-const occurencesNumber = [...getOcurrenceNumber(numberArray)].sort();
+const numberList = reactive<{numbers: string[]}>({ numbers: await getNumbersList() })
+const occurencesNumber = [...getOcurrenceNumber(numberList.numbers)].sort();
 </script>
 
 <style lang="scss" scoped>
