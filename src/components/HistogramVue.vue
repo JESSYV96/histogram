@@ -12,17 +12,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onUpdated } from "vue";
+import { ref, reactive } from "vue";
 
 import { getOcurrenceNumber } from "@/helpers/Histogram";
 import BarItemVue from "@/components/BarItemVue.vue";
 import { fetchNumbersList } from "@/services/HistogramService";
 
 const numberListLength = ref(100) 
-
 const numberList = reactive<{numbers: string[]}>({ numbers: await fetchNumbersList(numberListLength.value) })
 const occurencesNumber = ref<[string, number][]>([...getOcurrenceNumber(numberList.numbers)].sort());
-
 
 const getNumbersListHandler = async (numberListLength: number): Promise<void> => {
   numberList.numbers = [...await fetchNumbersList(numberListLength)]

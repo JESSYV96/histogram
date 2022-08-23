@@ -1,20 +1,20 @@
 <template>
   <div class="barItem">
-    <div class="bar" :style="heightBar">{{ occurences }}</div>
+    <div class="bar" :style="heightBarStyle">{{ occurences }}</div>
     <span>{{ number }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, defineProps } from "vue";
+import { computed, defineProps } from "vue";
 
 const props = defineProps({
   number: { type: String, required: true },
   occurences: { type: Number, required: true },
 });
 
-const heightBar = reactive({
-  height: `${props.occurences * 10}px`,
+const heightBarStyle = computed(() => {
+  return {height: `${props.occurences * 10}px`}
 });
 </script>
 
