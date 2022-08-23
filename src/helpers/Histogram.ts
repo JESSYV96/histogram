@@ -3,7 +3,7 @@ function increaseOccurenceOf(valueToIncrement: number, step = 1): number {
     return valueToIncrement += step
 }
 
-export function getOcurrenceNumber(numberArray: string[]) {
+export function getOcurrenceNumber(numberArray: string[]): Map<string, number> {
     const ocurrencesNumber = new Map()
     for (const number of numberArray) {
         if (ocurrencesNumber.has(number)) {
